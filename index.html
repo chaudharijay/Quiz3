@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0">
+    <title>C Guess</title>
+    <style>
+     *{
+        background-color: rgb(251, 218, 224);
+     }
+        .main {
+            position: relative;
+            display: inline-block;
+            
+        }
+        #submitButton{
+            height: 92.5%;
+            font-size: 20px;
+            border-radius: 0px 10px 10px 0px;
+            background-color: pink;
+            border: none;
+        }
+
+        .input-container {
+            position: absolute;
+            top: 1200px;
+            left: 35px;
+            right: 150px;
+            width: 57%; 
+            height: 8.4%;
+            padding: 5px;
+            box-sizing: border-box;
+            outline: none;
+            background-color: transparent;
+            font-size: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-left: 18px;
+
+        }
+
+        .input {
+            flex-grow: 1;
+            margin-bottom: 10px;
+            font-size: 20px;
+            border-radius: 15px 0px 0px 15px;
+            border:solid lightpink;
+            
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main"> 
+        <img src="Cpuzzle.jpg" alt="">
+        <div class="input-container">
+            <input type="text" id="inputBox" placeholder="4 Digit Code" class="input">
+            <button id="submitButton">Submit</button>
+        </div>
+        <div id="result"></div>
+    </div>
+</body>
+
+<script>
+    let correctCode = '4920';
+    let attempts = 0;
+    let result = document.getElementById('result');
+    let inputBox = document.getElementById('inputBox');
+    let submitButton = document.getElementById('submitButton');
+
+    function showImage() {
+        let img = document.createElement('img');
+        img.src = 'customImage.jpg';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.position = 'absolute';
+        img.style.top = '0';
+        img.style.left = '0';
+        document.body.appendChild(img);
+    }
+
+    function openCustomHtml() {
+        window.open('index2.html', '_blank');
+    }
+
+    submitButton.addEventListener('click', function() {
+        let input = inputBox.value;
+        if (input === correctCode) {
+           // result.textContent = '';
+            result.style.color = 'green';
+            inputBox.style.borderColor = 'green';
+            submitButton.style.backgroundColor = 'green';
+           openCustomHtml();
+        } else {
+            attempts++;
+           // result.textContent = `Incorrect. Attempts: ${attempts}`;
+            result.style.color = 'red';
+            inputBox.style.borderColor = 'red';
+            submitButton.style.backgroundColor = 'red';
+        }
+        inputBox.value = '';
+    });
+</script>
+</html>
